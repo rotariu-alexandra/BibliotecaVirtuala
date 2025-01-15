@@ -1,2 +1,2 @@
 # DAM03-dezv-project
-Binlioteca virtuala app
+Biblioteca virtuala app
