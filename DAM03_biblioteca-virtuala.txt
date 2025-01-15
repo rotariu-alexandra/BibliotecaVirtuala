@@ -1,0 +1,130 @@
+3.	Dezvoltare aplicații multistrat
+Aplicatie pentru gestionarea unei biblioteci
+
+Pagina logare - creare cont email, adresa,telefon, parola, nume /// conectare email, parola
+Pagina carti+ filtru de ordonare, bara de cauta dupa titlu/autor/an/domeniu
+Admin- vizualizare, editare, stergere, adaugare 
+Utilizator- viualizeze, filtreze
+
+Pagina Utilizatori+ apar clientii , datele lor si cartile imprumutate filtre, bara de cautare,
+Admin- editare, stergere 
+Utilizator- vizualizare date personale si editare
+
+Pagina administrator
+Admin- vizualizeaza cartile si persoanele care a imprumutat cartea
+
+Pagina Rapoarte
+Raport carti nereturnate
+Raport top cati imprumutate 
+
+Rezervare carti
+
+public class Utilizator {
+    private int id;
+    private String nume;
+    private String prenume;
+    private DetaliiContact detaliiContact; // legătură către clasa DetaliiContact
+    private String rol; // "admin" sau "utilizator"
+    
+}
+
+public class DetaliiContact {
+    private int id;
+    private String email;
+    private String adresa;
+    private String telefon;
+    
+}
+public class Carte {
+    private String ISBN;
+    private String titlu;
+    private String autor;
+    private int anPublicatie;
+    private String editura;
+    private String domeniu;
+    private DetaliiCarte detaliiCarte; // legătură către clasa DetaliiCarte
+
+}
+
+public class DetaliiCarte {
+    private int id;
+    private String statusCarte; // "disponibila", "imprumutata"
+    private String descriereCarte;
+  
+}
+
+
+
+public class Rezervare {
+    private int id;
+    private Utilizator utilizator; // legătură către clasa Utilizator
+    private Carte carte;           // legătură către clasa Carte
+    private Date dataRezervare;
+    
+}
+
+public class AutentificareService {
+    public Utilizator autentificare(String email, String parola) {
+        // logica de autentificare a utilizatorului
+    }
+
+    public Utilizator creareCont(String email, String parola, String nume, String prenume, String adresa, String telefon) {
+        // logica de creare a unui cont nou
+    }
+}
+
+
+
+public class CarteService {
+    public List<Carte> obtineCarti() {
+        // Returnează lista completă de cărți
+    }
+
+    public Carte adaugaCarte(Carte carte) {
+        // Adaugă o carte nouă în sistem
+    }
+
+    public void stergeCarte(String ISBN) {
+        // Șterge o carte pe baza ISBN-ului
+    }
+
+    public List<Carte> cautaCarti(String criteriu) {
+        // Logica de căutare a cărților pe baza unui criteriu (titlu, autor, etc.)
+    }
+
+    public List<Carte> filtreazaCarti(String criteriuFiltru) {
+        // Logica de filtrare a cărților pe baza unui criteriu (ex. domeniu)
+    }
+}
+
+
+
+public class UtilizatorService {
+    public List<Utilizator> obtineUtilizatori() {
+        // Returnează lista completă de utilizatori
+    }
+
+    public void editeazaUtilizator(int id, Utilizator utilizatorActualizat) {
+        // Logica de actualizare a informațiilor unui utilizator
+    }
+
+    public void stergeUtilizator(int id) {
+        // Șterge un utilizator pe baza ID-ului
+    }
+}
+
+
+
+public class RezervareService {
+    public Rezervare rezervaCarte(Utilizator utilizator, Carte carte) {
+        // Logica de rezervare a unei cărți pentru un utilizator
+    }
+
+    public List<Rezervare> obtineRezervariPentruUtilizator(int utilizatorId) {
+        // Returnează lista de rezervări ale unui utilizator
+    }
+}
+
+
+
+
